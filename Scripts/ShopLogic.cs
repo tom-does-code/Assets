@@ -30,6 +30,7 @@ public class ShopLogic : MonoBehaviour
     public PlayerValues playerStats;
 
     public int currentPrice;
+    public bool ingameValue;
 
     void Start()
     {
@@ -37,6 +38,8 @@ public class ShopLogic : MonoBehaviour
 
         objectParent = transform.parent.gameObject;
         data = objectParent.transform.Find("Data").gameObject;
+
+        ingameValue = data.GetComponent<ShopLogic>().ownsItem;
 
         buttonTitle = objectParent.transform.Find("Title").gameObject;
         buttonDescription = objectParent.transform.Find("Description").gameObject;
@@ -66,7 +69,7 @@ public class ShopLogic : MonoBehaviour
         string itemDescription = data.GetComponent<ShopLogic>().itemDescription;
         int playerCoins = playerStats.Cash;
 
-        if (playerCoins >= currentPrice)
+        if (playerCoins >= itemPrice)
         {
             Confirm(itemPrice, itemName, itemDescription);
         }
@@ -85,15 +88,17 @@ public class ShopLogic : MonoBehaviour
         confirmDescription.GetComponent<TextMeshProUGUI>().text = itemDescription;
         confirmCanvas.transform.SetParent(transform.parent);
         confirmCanvas.SetActive(true);
+
+        Debug.Log("Values: " + itemName + currentPrice);
     }
 
     public void ConfirmClick()
     {
-        ownsItem = true;
+        ingameValue = true;
         playerStats.Cash -= currentPrice;
         confirmCanvas.transform.SetParent(shopUI.transform);
         confirmCanvas.SetActive(false);
 
-        Debug.Log("Player charged: " + currentPrice);
+        currentPrice = 0;
     }
 }

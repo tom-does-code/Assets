@@ -1819,6 +1819,7 @@ MonoBehaviour:
   ownsItem: 0
   playerStats: {fileID: 1243812718}
   currentPrice: 0
+  ingameValue: 0
 --- !u!1 &302770016
 GameObject:
   m_ObjectHideFlags: 0
@@ -6829,6 +6830,7 @@ MonoBehaviour:
   ownsItem: 0
   playerStats: {fileID: 1243812718}
   currentPrice: 0
+  ingameValue: 0
 --- !u!1 &1226579713
 GameObject:
   m_ObjectHideFlags: 0
@@ -9925,6 +9927,7 @@ MonoBehaviour:
   ownsItem: 0
   playerStats: {fileID: 1243812718}
   currentPrice: 0
+  ingameValue: 0
 --- !u!1 &1835705005
 GameObject:
   m_ObjectHideFlags: 0
